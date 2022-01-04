@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<!-- carousel-item  -->
+
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+
+  <div class="carousel-inner" style="height: 450px;">
+    {% for i in post %}
+    <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
+      <img src="{{i.photo.url}}" style="height: 450px; width: 1300px;" alt="...">
+    </div>
+    {% endfor %}
+  </div>
+</div><br>
+
+
+<!-- Video Gallery-item  -->
+
+<center><h2>Video Gallery</h2><br></center>
+<div class="container">
+   {% for x in allvideopost %}
+   <div class="row" controls class="rounded-start" style="background-color: burlywood;">
+
+      <div class="col-md-6 ">
+        <div class="video_space" style="background-color: burlywood; padding-top: 20px;">
+          <video controls class="rounded-start"
+            style="padding:20px; width: 500px; height: 405px; border-bottom-right-radius: 0.25rem!important; border-top-left-radius: 0.25rem!important;">
+            <source src="{{x.video.url}}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+      
+
+      <div class="col-md-6" style="padding-top: 20px;">
+        <div class="card mb-3">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="{{x.photo1.url}}" class="img-fluid rounded-start" style="max-width: 100%; height: 176px;"
+                alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text" style="color: black;">This is a wider card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-3">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="{{x.photo2.url}}" class="img-fluid rounded-start" style="max-width: 100%; height: 176px;"
+                alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text" style="color: black;">This is a wider card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>  
+</div>  
+  {% endfor %}
+
+<!-- Banner -->
+
+<br>
+
+  <div class="banner">
+    <div class="row" style="background-color: burlywood; height: 300px;">
+        <div class="col-3">
+          <div class="flexDivTesti"  style="padding-top: 90px;">
+            <div class="leftTestiPic">
+              <p class="clientPicHome" style="padding-left: 90px;"><img class="rounded-circle"
+                  src="{% static 'img/2.jpg' %}" width="150" height="150"
+                  alt="Kurt"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-9">
+          <div class="testiText text-left" style="padding-top: 100px; padding: 100px;">
+            <div class="row">
+              <div class="col-3" style="max-height: 5px; max-width: 5px;">
+                <p><i class="fa fa-quote-left"></i></p>
+              </div>
+              <div class="col-9">
+                <p class="clientText">
+                  We have been working with smartData since 2009 implementing a large practice management solution in healthcare. It has been great working with the team.
+                </p>
+                <div class="clName">
+                  <span>LzyCrazy PVT LTD</span> -<p>CEO</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>  
+
+<!-- card block -->
+  <br>
+  <h2 style="text-align: center;">Latest Blog</h2><br>
+  <div class=container>
+    <div class="row">
+      {% for i in latest %}
+      <div class="col-3" style="padding: 20px;">
+        <div class="card" style="width: 16rem;">
+          <img src="{{i.photo.url}}" class="card-img-top"style="height: 170px;" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{i.title}}</h5>
+            <h1>{{i.views}}</h1>
+            <p class="card-text">{{i.subtitle}}</p>
+            <a href="{{i.slug}}" class="btn btn-primary">Read more</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+      <!-- <div class="col-3" style="padding: 20px;">
+        <div class="card" style="width: 16rem;">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-3" style="padding: 20px;">
+        <div class="card" style="width: 16rem;">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-3" style="padding: 20px;">
+        <div class="card" style="width: 16rem;">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div> -->
+
+    </div>   
+  </div>
+
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="row">
+        {% for i in allpost %}
+        <div class="col-md-3" style="padding: 15px;">
+            <div class="card">
+                <img src="{{i.photo.url}}" class="card-img-top" style="height: 150px;" alt="...">
+                <div class="card-body">
+                    <center>
+                        <h5 class="card-title">{{i.title}}</h5>
+                        {{i.views}}
+                    </center>
+                    <center>
+                        <h6 class="card-title">{{i.subtitle}}</h6>
+                    </center>
+                    <center>
+                        <p class="card-title">{{i.content|truncatechars:50|safe}} <a style="text-decoration:none;"
+                                href="{{i.slug}}">Read more</a></p>
+                    </center>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+  </div>
+</div><br>
+{% endblock %}
+

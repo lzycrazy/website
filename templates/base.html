@@ -1,0 +1,158 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+</head>
+
+<body>
+
+  <!-- navbar -->
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid" id="nav_bar">
+      <a class="navbar-brand" href="#">Jaahid Hasan</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+        aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarScroll">
+        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'index' %}" aria-current="page">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{%  url 'about' %}">About</a>
+          </li>
+
+          <li class="nav-item dropdown" active>
+            <a class="nav-link" href="{% url 'blog' %}">Blog</a>
+
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{%  url 'contact' %}">Contact Us</a>
+          </li>
+
+        </ul>
+
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+
+      </div>
+    </div>
+  </nav>
+  {% for message in messages %}
+  <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert" style="margin: 0px;">
+    <strong>Message :</strong>{{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endfor %}
+  {% block content %}
+
+
+  {% endblock %}
+
+  <footer>
+    <div class="container-fluid" style="background-color: black; ">
+      <div class="row" style="height: 350px; display: flex;">
+        <div class="col-sm-4" style="background-color: black; padding: 30px;">
+          <br>
+          <div class="widget-title">
+            <h6 style="color: white;">About Us</h6>
+            <hr style="color: white; margin: 0px;">
+          </div>
+          <br>
+          <div class="textwidget" style="color: white;font-size: 13px">
+            <p>Map where your photos were taken and discover local points of interest. Map where your photos.</p>
+            <h7>Address :</h7>
+            <p>
+              Location-Office No. C-1112,3rd Floor, Dharampali Palace<br>
+              Bhoja Market Sector-27, Noida-201301<br>
+              E-mail: lzycrazy1@gmail.com<br>
+              Phone: 8 800 123 4567<br>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-sm-4" style="background-color: black; padding: 30px;">
+          <br>
+          <div class="widget-title">
+            <h6 style="color: white;">Pages</h6>
+            <hr style="color: white; margin: 0px;">
+          </div><br>
+          <div class="pagelink" style="margin: 0px;">
+            <a style="text-decoration: none;color: white;font-size: 13px;;list-style-type: none; margin: 0px;"
+              href="{% url 'index' %}">Home</a><br>
+            <a style="text-decoration: none;color: white;font-size: 13px" href="{% url 'about' %}">About Us</a><br>
+            <a style="text-decoration: none;color: white;font-size: 13px" href="{% url 'contact' %}">Contact Us</a>
+          </div>
+        </div>
+
+        <div class="col-sm-4" style="background-color: black; padding: 30px;"><br>
+          <h6 style="color: white;">Newsletter</h6>
+          <hr style="color: white; margin: 0px;"><br>
+          <div id="signup_footer" class="d-flex align-items-start" style="margin-top: 30px;">
+            <div class="form-group w-100 mr-2">
+
+              <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                  </div>
+              <form  method="POST">
+                {% csrf_token %}
+                <input id="mce-EMAIL" class="footer__email-input form-control form-control--muted" name="email"
+                  type="email" aria-describedby="footerEmail" placeholder="Email address">
+            </div>
+            <input class="btn btn-brand btn btn btn-success" type="submit" value="Subscribe" name="subscibe"
+              id="mc-embedded-subscribe" style="margin-left: 10px;">
+            
+          </div></form><br>
+          <ul class="social-icons" style="display: flex; padding-left: 80px; padding-top: 20px;">
+            <a href="#"><i class="fab  fa-twitter" style="color: #f7e8e8;"></i></a>
+            <a href="#"><i class="fab  fa-instagram" style="margin-left: 15px; color: #f7e8e8;"></i></a>
+            <a href="#"><i class="fab  fa-facebook-f" style="margin-left: 15px; color: #f7e8e8;"></i></a>
+            <a href="#"><i class="fab  fa-pinterest-p" style="margin-left: 15px; color: #f7e8e8;"></i></a>
+          </ul>
+        </div>
+
+        <div class="footer-bar">
+          <div class="container">
+            <div class="row" style="color:darkgray;">
+              <div class="col-md-12">
+                <div class="copyright" style="text-align: center; color: darkgray;">
+                  <p>© 2021 Boomerang, All Rights Reserved. Design with love by <a href="LzyCrazyhttps://lzycrazy.com"
+                      style="text-decoration: none;"><b>LzyCrazy Private Limited.</b></a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  </footer>
+
+
+  <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/all.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
+
+</body>
+
+</html>
